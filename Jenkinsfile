@@ -17,5 +17,16 @@ pipeline {
 				sh 'mvn clean compile'
 			}
 		}
+		stage('test') {
+			agent {
+				docker {
+					image 'maven:3.6.0-jdk-8-alpine'
+					reuseNode true
+				}
+			}
+			steps {
+				sh 'mvn test'
+			}
+		}
 	}
 }
