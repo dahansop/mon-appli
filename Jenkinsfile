@@ -9,7 +9,7 @@ pipeline {
 		stage('build') {
 			agent {
 				docker {
-					image 'mave:3.6.9-jdk-8-alpine'
+					image 'maven:3.6.9-jdk-8-alpine'
 					reuseNode true
 				}
 			}
