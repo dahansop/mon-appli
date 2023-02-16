@@ -27,5 +27,15 @@ pipeline {
 				}
 			}
 		}
+		stage('checkstyle') { 
+            		steps {
+                		sh 'mvn checkstyle:checkstyle' 
+            		}
+            		post {
+                		always {
+                    			recordIssues enabledForFailure: true, tool: checkStyle()
+                		}
+	            	}
+        	}
 	}
 }
