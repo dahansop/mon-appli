@@ -10,7 +10,6 @@ pipeline {
 			agent {
 				docker {
 					image 'maven:3.6.0-jdk-8-alpine'
-					reuseNode true
 				}
 			}
 			steps {
@@ -18,12 +17,6 @@ pipeline {
 			}
 		}
 		stage('test') {
-			agent {
-				docker {
-					image 'maven:3.6.0-jdk-8-alpine'
-					reuseNode true
-				}
-			}
 			steps {
 				sh 'mvn test'
 			}
