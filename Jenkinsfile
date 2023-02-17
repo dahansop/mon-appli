@@ -58,13 +58,13 @@ pipeline {
 		}
 		stage('findbugs') {
 			steps {
-                		sh 'mvn findbugs:findbugs' 
-            		}
-            		post {
-                		always {
-                    			recordIssues enabledForFailure: true, tool: spotBugs(pattern: '**/target/findbugsXml.xml')
-                		}
-	            	}
+           sh 'mvn findbugs:findbugs' 
+       }
+       post {
+           always {
+               recordIssues enabledForFailure: true, tool: spotBugs(pattern: '**/target/findbugsXml.xml')
+           }
+	     }
 		}
 	}
 }
