@@ -90,8 +90,7 @@ pipeline {
 			echo "${filesByGlob}"
                     echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     artifactPath = filesByGlob[0].path
-                    artifact
-			Exists = fileExists artifactPath
+                    artifactExists = fileExists artifactPath
                     if (artifactExists) {
                         nexusArtifactUploader(
                         nexusVersion: NEXUS_VERSION,
