@@ -1,5 +1,9 @@
 pipeline {
 	agent any
+	environment {
+		SONARCUBE_HOST: 'http://localhost'
+		SONARCUBE_PORT:'9000'
+	}
 	stages {
 		stage('SCM') {
 			steps {
@@ -39,7 +43,7 @@ pipeline {
         	}
 		stage('sonar') {
 			steps {
-				sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=mon-appli -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqp_2562be20f11fed54c2f378a2a1a578820729d0df'
+				sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=mon-appli -Dsonar.host.url=$SONARCUBE_HOST:$SONARCUBE_PORT -Dsonar.login=sqp_2562be20f11fed54c2f378a2a1a578820729d0df'
 			}
 		}
 			
