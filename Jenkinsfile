@@ -49,9 +49,9 @@ pipeline {
 		/* etape d'execution de l'analyse sonar */
 		stage('sonar') {
 			/* permet de lancer le stage uniquement sur certaines branches. ici master et sonar */
-			/*when {
+			when {
 				anyOf {branch 'sonar'}
-			}*/
+			}
 			steps {
 				withCredentials([string(credentialsId: 'TOKEN_SONAR', variable: 'TOKEN_SONAR')]) {
 					sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=mon-appli -Dsonar.host.url=$SONARQUBE_HOST:$SONARQUBE_PORT -Dsonar.login=$TOKEN_SONAR'
