@@ -50,8 +50,7 @@ pipeline {
 		stage('sonar') {
 			/* permet de lancer le stage uniquement sur certaines branches. ici master et sonar */
 			when {
-				anyOf {branch 'master'
-				       branch 'sonar'}
+				anyOf {branch 'sonar'}
 			}
 			steps {
 				sh 'mvn clean verify sonar:sonar -Dsonar.projectKey=mon-appli -Dsonar.host.url=$SONARQUBE_HOST:$SONARQUBE_PORT -Dsonar.login=$TOKEN_SONAR'
