@@ -32,7 +32,7 @@ pipeline {
 				}
 			}
 			steps {
-				sh 'mvn clean compile'
+				sh 'mvn clean package'
 			}
 		}
 		/* etape d'execution des tests unitaires */
